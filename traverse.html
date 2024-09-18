@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link Traverse Computation Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Link Traverse Computation Calculator</h1>
+        <form id="traverseForm">
+            <!-- Number of Stations -->
+            <div>
+                <label for="stations">Number of Stations:</label>
+                <input type="number" id="stations" min="3" required>
+            </div>
+
+            <!-- Station 1 and Station 2 Coordinates for First Leg -->
+            <div>
+                <h3>First Leg (Station 1 - Station 2) Coordinates</h3>
+                <label for="startEasting1">Starting Easting Coordinate (Station 1):</label>
+                <input type="number" step="0.001" id="startEasting1" required>
+                
+                <label for="startNorthing1">Starting Northing Coordinate (Station 1):</label>
+                <input type="number" step="0.001" id="startNorthing1" required>
+
+                <label for="startEasting2">Easting Coordinate of Station 2:</label>
+                <input type="number" step="0.001" id="startEasting2" required>
+
+                <label for="startNorthing2">Northing Coordinate of Station 2:</label>
+                <input type="number" step="0.001" id="startNorthing2" required>
+            </div>
+
+            <!-- Last Station Coordinates for Validation -->
+            <div>
+                <h3>Last Station Coordinates (Validation)</h3>
+                <label for="endEasting">Ending Easting Coordinate (Last Station):</label>
+                <input type="number" step="0.001" id="endEasting" required>
+                
+                <label for="endNorthing">Ending Northing Coordinate (Last Station):</label>
+                <input type="number" step="0.001" id="endNorthing" required>
+            </div>
+
+            <!-- Generated Traverse Legs Section -->
+            <div id="traverseLegs"></div>
+
+            <!-- Buttons -->
+            <button type="button" onclick="generateTraverseLegs()">Generate Traverse Legs</button>
+            <button type="submit">Calculate Traverse</button>
+            <button type="button" onclick="downloadExcel()">Download as CSV</button>
+        </form>
+
+        <!-- Results Table -->
+        <div id="results">
+            <h2>Traverse Results</h2>
+            <table id="resultsTable">
+                <thead>
+                    <tr>
+                        <th>Station</th>
+                        <th>Leg Length (meters)</th>
+                        <th>Anticlockwise Angle (DMS)</th>
+                        <th>Bearing (Degrees)</th>
+                        <th>Latitude (ΔN)</th>
+                        <th>Departure (ΔE)</th>
+                        <th>Coordinates (E, N)</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="traverseishwor.js"></script>
+</body>
+</html>
